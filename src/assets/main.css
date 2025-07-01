@@ -1,0 +1,44 @@
+/* ---------- RESET BÁSICO ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --clr-bg: #f5f7fa;
+    --clr-primary: #1e3a8a;
+    --clr-primary-dark: #172554;
+    --clr-accent: #f97316;
+    --clr-text: #1e293b;
+    --radius: 0.75rem;
+    --shadow: 0 4px 12px rgba(0,0,0,.08);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  /* ---------- LAYOUT ---------- */
+  body {
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  
+  
+  
+  /* ---------- CARDS ---------- */
+
+  
+  
+  
+  
+
+  

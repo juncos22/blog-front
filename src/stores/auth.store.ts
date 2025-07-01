@@ -10,8 +10,6 @@ interface AuthState {
   token?: string;
   success?: boolean;
   message?: string;
-  login: (user: UserCredentials) => void;
-  logout: () => void;
 }
 
 export const useAuthStore = defineStore("auth", {
@@ -19,14 +17,6 @@ export const useAuthStore = defineStore("auth", {
     loading: false,
     isAuthenticated: false,
     user: null,
-    token: undefined,
-    success: undefined,
-    message: undefined,
-    login: async (user: UserCredentials) => {},
-    logout: () => {
-      LocalStorageUtils.removeItem("token");
-      useAuthStore().$reset();
-    },
   }),
   actions: {
     async login(user: UserCredentials) {
@@ -46,5 +36,13 @@ export const useAuthStore = defineStore("auth", {
         this.loading = false;
       }
     },
+    async logout() {
+      LocalStorageUtils.removeItem("token");
+      useAuthStore().$reset();
+    },
+  },
+  getters: {
+    isAuthenticated: (state) => state.isAuthenticated,
+    token: (state) => state.token,
   },
 });

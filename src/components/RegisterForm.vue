@@ -1,6 +1,9 @@
 <template>
   <form>
-    <h2>Iniciar Sesión</h2>
+    <h2>Crea tu cuenta</h2>
+
+    <label for="name">Nombre completo</label>
+    <input type="text" id="name" placeholder="Juan Pérez" required />
 
     <label for="email">Correo electrónico</label>
     <input
@@ -13,14 +16,14 @@
     <label for="password">Contraseña</label>
     <input type="password" id="password" placeholder="********" required />
 
-    <button type="submit">Entrar</button>
+    <button type="submit">Registrarme</button>
   </form>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
-const userForm = ref({ email: "", password: "" });
+const data = ref(null);
 </script>
 
 <style scoped>

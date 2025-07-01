@@ -8,7 +8,10 @@ import { RouterView } from "vue-router";
     <Navigation />
   </header>
 
-  <RouterView />
+  <!-- CONTENT -->
+  <main class="container">
+    <RouterView />
+  </main>
 </template>
 
 <style scoped></style>
