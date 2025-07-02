@@ -17,21 +17,24 @@ export const useAuthStore = defineStore("auth", {
     loading: false,
     isAuthenticated: false,
     user: null,
+    token: LocalStorageUtils.getItem("token"),
   }),
   actions: {
     async login(user: UserCredentials) {
-      this.loading = true;
+      this.$state.loading = true;
       try {
         const response = await api.post("/auth/login", user);
-        this.token = response.data.token;
-        LocalStorageUtils.setItem("token", this.token);
+        // console.log(response.data.data);
+        this.$state.token = response.data.data;
+        LocalStorageUtils.setItem("token", response.data.data);
         this.isAuthenticated = true;
-        this.user = response.data.user;
+        // this.user = response.data.user;
         this.success = true;
         this.message = "Login successful";
       } catch (error: any) {
+        console.error(error);
         this.success = false;
-        this.message = error.response?.data?.message || "Login failed";
+        this.message = error.message || "Login failed";
       } finally {
         this.loading = false;
       }
@@ -42,7 +45,7 @@ export const useAuthStore = defineStore("auth", {
     },
   },
   getters: {
-    isAuthenticated: (state) => state.isAuthenticated,
+    isUserAuthenticated: (state) => state.isAuthenticated,
     token: (state) => state.token,
   },
 });

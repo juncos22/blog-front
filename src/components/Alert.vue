@@ -6,18 +6,24 @@
       success: props.type === 'success',
     }"
   >
-    {props.message}
+    {{ props.message }}
   </span>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ type: "error" | "success"; message: string }>();
+type Props = {
+  type: "error" | "success";
+  message: string;
+};
+const props = defineProps<Props>();
 </script>
 
 <style scoped>
 .alert {
-  width: 80%;
-  margin-inline: auto;
+  width: 30%;
+  padding-inline: 10rem;
+  padding-block: 0.5rem;
+  border-radius: 8rem;
   color: rgb(27, 27, 27);
 }
 .error {

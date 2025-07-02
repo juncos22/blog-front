@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="() => emit('submit', userForm)">
     <h2>Iniciar Sesión</h2>
 
     <label for="email">Correo electrónico</label>
@@ -7,20 +7,31 @@
       type="email"
       id="email"
       placeholder="tucorreo@ejemplo.com"
+      v-model="userForm.email"
       required
     />
 
     <label for="password">Contraseña</label>
-    <input type="password" id="password" placeholder="********" required />
+    <input
+      type="password"
+      id="password"
+      v-model="userForm.password"
+      placeholder="********"
+      required
+    />
 
     <button type="submit">Entrar</button>
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
+import type { UserCredentials } from "@/models/user";
 
-const userForm = ref({ email: "", password: "" });
+const userForm = ref<UserCredentials>({ email: "", password: "" });
+const emit = defineEmits<{
+  submit: [value: UserCredentials];
+}>();
 </script>
 
 <style scoped>
